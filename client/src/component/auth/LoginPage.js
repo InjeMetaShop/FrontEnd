@@ -38,23 +38,22 @@ export default function LoginPage() {
         const { email, password } = dataForLogin;
         const postData = { email, password };
 
-        // axios
-        //     .post("/api/auth/login", postData)
-        //     .then(function (response) {
-        //         const authorizationHeader = response.headers["authorization"];
-        //         dispatch(setToken(authorizationHeader));
-
-        //         if (authorizationHeader) {
-        //             localStorage.setItem("token", authorizationHeader);
-        //         }
-        //         console.log(response, "성공");
-        //         console.log(authorizationHeader);
-        //         navigate("/");
-        //     })
-        //     .catch(function (err) {
-        //         alert("로그인할 수 없습니다. 계정을 확인해주세요!");
-        //         console.log(err);
-        //     });
+        axios
+            .post("/api/auth/login", postData)
+            .then((response) => {
+                const authorizationHeader = response.headers["authorization"];
+                // dispatch(setToken(authorizationHeader));
+                if (authorizationHeader) {
+                    localStorage.setItem("token", authorizationHeader);
+                }
+                console.log(response, "성공");
+                console.log(authorizationHeader);
+                navigate("/");
+            })
+            .catch((err) => {
+                alert("로그인할 수 없습니다. 계정을 확인해주세요!");
+                console.log(err);
+            });
     };
 
     return (
