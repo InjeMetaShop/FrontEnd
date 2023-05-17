@@ -1,5 +1,25 @@
 .App {
-  text-align: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    
+}
+
+.App::before{
+    content: "";
+    background-image: url("../src/assets/images/1.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+    min-height: 100%; /* 추가 */
 }
 
 .App-logo {
@@ -27,6 +47,7 @@
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {
