@@ -17,24 +17,24 @@ import Typography from '@mui/material/Typography';
 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />;
 
 // 구매한 물품들 / 카드
-export default function MediaCard() {
-  return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards"
-        title="product image"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-            상품 사진
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">가격</Button>
-        <Button size="small">태그</Button>
-        <Button size="small">올린이</Button>
-      </CardActions>
-    </Card>
-  );
+export default function MyPage() {
+    return (
+        <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+                sx={{ height: 140 }}
+                image="/static/images/cards"
+                title="product image"
+            />
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    상품 사진
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small">가격</Button>
+                <Button size="small">태그</Button>
+                <Button size="small">올린이</Button>
+            </CardActions>
+        </Card>
+    );
 }
