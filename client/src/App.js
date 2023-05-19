@@ -2,21 +2,20 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 
-import HomePage from "./component/home/HomePage";
-import LoginPage from "./component/auth/LoginPage";
-import SignUpPage from "./component/auth/SignUpPage";
-import ProductDetailPage from "./component/product/ProductDetail";
+import HomePage from "./component/view/home/HomePage";
+import LoginPage from "./component/view/auth/LoginPage";
+import SignUpPage from "./component/view/auth/SignUpPage";
+import ProductDetailPage from "./component/view/product/ProductDetail";
+import IntroPage from "./component/view/intro/IntroPage";
 
-import Header from "./component/layout/Header";
-import Footer from "./component/layout/Footer";
+import Footer from "./component/view/layout/Footer";
 
 function App() {
     return (
         <div className="App">
-            <Header />
             <Routes>
-                <Route path="/" element={<HomePage />}></Route>
-
+                <Route path="/" element={<IntroPage />}></Route>
+                <Route path="/dashboard" element={<></>}></Route>
                 <Route path="/login" element={<LoginPage />}></Route>
                 <Route path="/register" element={<SignUpPage />}></Route>
                 <Route
