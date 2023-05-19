@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MainFeaturedPost from "./post/MainFeaturedPost";
 import Product from "./product/Product";
+import MenuBar from "../layout/MenuBar";
 
 const mainFeaturedPost = {
     title: "Meta 쇼핑몰",
@@ -20,6 +21,7 @@ export default function HomePage() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <CssBaseline />
+            <MenuBar />
             <Container maxWidth="lg">
                 <br />
                 <main>

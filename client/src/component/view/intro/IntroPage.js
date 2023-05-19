@@ -3,21 +3,23 @@ import HomeAppBar from "../layout/HomeAppBar";
 import "./intro.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 function Intro() {
+    const navigate = useNavigate();
     return (
         <div className="bg">
-            {/* <video className="video" autoPlay loop muted>
+            <video className="video" autoPlay loop muted>
                 <source src={process.env.PUBLIC_URL + "/images/pre2.mp4"} />
-            </video> */}
-            <img
+            </video>
+            {/* <img
                 src={process.env.PUBLIC_URL + "/images/pre2.jpg"}
                 className="video"
                 style={{
                     width: "100%",
                     height: "100%",
                 }}
-            ></img>
+            ></img> */}
 
             {/* 둘중에 뭐할지 골라야됨 */}
             <Box
@@ -38,6 +40,10 @@ function Intro() {
                         border: "2px solid white",
                         background: "#000",
                         borderRadius: 10,
+                    }}
+                    onClick={() => {
+                        // TODO 로그인창으로 넘어가고 만약 로그인상태라면 바로 dashboard창으로 이동하기
+                        navigate("/login");
                     }}
                 >
                     &nbsp;시작하기&nbsp;

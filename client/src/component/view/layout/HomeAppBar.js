@@ -8,7 +8,6 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import { useNavigate } from "react-router-dom";
 
@@ -138,7 +137,7 @@ function HomeAppBar() {
                                 navigate("/login");
                             }}
                             sx={{
-                                my: 2,
+                                my: 1,
                                 color: "white",
                                 border: 2,
                             }}
