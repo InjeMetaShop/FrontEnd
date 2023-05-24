@@ -10,7 +10,7 @@ function Intro() {
     return (
         <div className="bg">
             <video className="video" autoPlay loop muted>
-                <source src={process.env.PUBLIC_URL + "/images/pre2.mp4"} />
+                <source src={process.env.PUBLIC_URL + "/images/pre.mp4"} />
             </video>
             {/* <img
                 src={process.env.PUBLIC_URL + "/images/pre2.jpg"}
@@ -35,7 +35,7 @@ function Intro() {
                         fontFamily: "-apple-system",
                         fontWeight: 500,
                         color: "white",
-                        fontSize: "2vmax",
+                        fontSize: "1vmax",
                         textAlign: "center",
                         border: "2px solid white",
                         background: "#000",

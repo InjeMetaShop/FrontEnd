@@ -20,6 +20,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
+import { UserListItems } from "./listitem/ListItems";
 
 const drawerWidth = 240;
 const pages = ["Products", "Pricing", "Blog"];
@@ -42,7 +43,7 @@ export default function ClippedDrawer() {
                 position="fixed"
                 sx={{
                     zIndex: (theme) => theme.zIndex.drawer + 1,
-                    background: "black",
+                    background: "#222",
                 }}
             >
                 <Toolbar>
@@ -152,10 +153,16 @@ export default function ClippedDrawer() {
                 <Toolbar />
                 <Box
                     sx={{
+                        height: "100%",
+                        background: "#EEE",
                         overflow: "auto",
+                        color: "white",
                     }}
                 >
-                    <List>
+                    <br />
+                    <br />
+                    <UserListItems />
+                    {/* <List>
                         {["Inbox", "Starred", "Send email", "Drafts"].map(
                             (text, index) => (
                                 <ListItem key={text} disablePadding>
@@ -172,9 +179,11 @@ export default function ClippedDrawer() {
                                 </ListItem>
                             )
                         )}
-                    </List>
-                    <Divider />
-                    <List>
+                    </List> */}
+                    {/* <Divider
+                        sx={{ borderBottomWidth: "3px", borderColor: "black" }}
+                    /> */}
+                    {/* <List>
                         {["All mail", "Trash", "Spam"].map((text, index) => (
                             <ListItem key={text} disablePadding>
                                 <ListItemButton>
@@ -189,7 +198,7 @@ export default function ClippedDrawer() {
                                 </ListItemButton>
                             </ListItem>
                         ))}
-                    </List>
+                    </List> */}
                 </Box>
             </Drawer>
         </Box>

@@ -70,7 +70,7 @@ export function UserListItems() {
                                 fontWeight: "600",
                             }}
                         >
-                            HOME
+                            아이템
                         </Typography>
                     }
                 />
@@ -94,7 +94,7 @@ export function UserListItems() {
                                 fontWeight: "600",
                             }}
                         >
-                            PRODUCT
+                            가이드
                         </Typography>
                     }
                 />
