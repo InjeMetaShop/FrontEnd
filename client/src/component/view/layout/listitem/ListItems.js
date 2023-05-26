@@ -70,6 +70,30 @@ export function UserListItems() {
                                 fontWeight: "600",
                             }}
                         >
+                            대쉬보드
+                        </Typography>
+                    }
+                />
+            </ListItemButton>
+
+            <ListItemButton
+                onClick={() => {
+                    navigate("/item");
+                }}
+            >
+                <ListItemIcon>
+                    <HomeIcon sx={{ color: "#000" }} fontSize="large" />
+                </ListItemIcon>
+                <ListItemText
+                    disableTypography
+                    primary={
+                        <Typography
+                            style={{
+                                color: "black",
+                                fontSize: "0.9vmax",
+                                fontWeight: "600",
+                            }}
+                        >
                             아이템
                         </Typography>
                     }
