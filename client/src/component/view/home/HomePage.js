@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import MainFeaturedPost from "./post/MainFeaturedPost";
+import MainFeaturedPost from "../layout/post/MainFeaturedPost";
 import MenuBar from "../layout/MenuBar";
 import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
