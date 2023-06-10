@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MainFeaturedPost from "../layout/post/MainFeaturedPost";
 import MenuBar from "../layout/MenuBar";
@@ -37,7 +36,6 @@ const HorizonLine = () => {
     );
 };
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 const mdTheme = createTheme();
 
@@ -93,7 +91,6 @@ export default function HomePage() {
                                 }}
                                 paddingTop="3vmax"
                             >
-                                {/* 멤버 */}
                                 <Grid item xs={12}>
                                     <Paper
                                         sx={{
@@ -111,7 +108,7 @@ export default function HomePage() {
                                             sx={{ width: 1570 }}
                                             cols={5}
                                         >
-                                            {products.map((item, i) => (
+                                            {products.map((item) => (
                                                 <ImageListItem
                                                     key={item.id}
                                                     sx={{
@@ -164,66 +161,3 @@ export default function HomePage() {
         </ThemeProvider>
     );
 }
-
-const itemData = [
-    {
-        img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-        title: "Breakfast",
-        price: "1000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-        title: "Burger",
-        price: "2000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-        title: "Camera",
-        price: "3000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-        title: "Coffee",
-        price: "4000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-        title: "Hats",
-        price: "5000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-        title: "Honey",
-        price: "6000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-        title: "Basketball",
-        price: "7000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-        title: "Fern",
-        price: "8000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-        title: "Mushrooms",
-        price: "9000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-        title: "Tomato basil",
-        price: "10000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-        title: "Sea star",
-        price: "11000",
-    },
-    {
-        img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-        title: "Bike",
-        price: "12000",
-    },
-];
