@@ -11,24 +11,25 @@ import ItemPage from "./component/view/item/ItemPage";
 import Footer from "./component/view/layout/Footer";
 
 import ExPage from "./component/view/item/ExPage";
+import ProductDetail from "./component/view/product/ProductDetail";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<IntroPage />}></Route>
-        <Route path="/dashboard" element={<HomePage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/register" element={<SignUpPage />}></Route>
-        <Route path="/item" element={<ExPage />}></Route>
-        <Route
-          path="/product/:productId"
-          element={<ProductDetailPage />}
-        ></Route>
-      </Routes>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Routes>
+                <Route path="/" element={<IntroPage />}></Route>
+                <Route path="/dashboard" element={<HomePage />}></Route>
+                <Route path="/login" element={<LoginPage />}></Route>
+                <Route path="/register" element={<SignUpPage />}></Route>
+                <Route path="/item" element={<ExPage />}></Route>
+                <Route
+                    path="/product_detail"
+                    element={<ProductDetail />}
+                ></Route>
+            </Routes>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
