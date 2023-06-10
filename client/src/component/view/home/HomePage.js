@@ -11,7 +11,6 @@ import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-// import { useNavigate } from "react-router-dom";
 
 const mainFeaturedPost = {
   title: "사장이 미쳤어요!!!",

@@ -82,30 +82,6 @@ export function UserListItems() {
                 }}
             >
                 <ListItemIcon>
-                    <HomeIcon sx={{ color: "#000" }} fontSize="large" />
-                </ListItemIcon>
-                <ListItemText
-                    disableTypography
-                    primary={
-                        <Typography
-                            style={{
-                                color: "black",
-                                fontSize: "0.9vmax",
-                                fontWeight: "600",
-                            }}
-                        >
-                            아이템
-                        </Typography>
-                    }
-                />
-            </ListItemButton>
-
-            <ListItemButton
-                onClick={() => {
-                    navigate("/item");
-                }}
-            >
-                <ListItemIcon>
                     <InventoryIcon sx={{ color: "#000" }} fontSize="large" />
                 </ListItemIcon>
                 <ListItemText
