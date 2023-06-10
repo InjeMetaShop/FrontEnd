@@ -10,18 +10,18 @@ import ProductPage from "./component/view/product/ProductPage";
 import ProfilePage from "./component/view/profile/ProfilePage";
 
 function App() {
-    return (
-        <div className="App">
-            <Routes>
-                <Route path="/" element={<IntroPage />}></Route>
-                <Route path="/dashboard" element={<HomePage />}></Route>
-                <Route path="/login" element={<LoginPage />}></Route>
-                <Route path="/register" element={<SignUpPage />}></Route>
-                <Route path="/product/:productId" element={<ProductPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-            </Routes>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<IntroPage />}></Route>
+        <Route path="/dashboard" element={<HomePage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/register" element={<SignUpPage />}></Route>
+        <Route path="/product/:productId" element={<ProductPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

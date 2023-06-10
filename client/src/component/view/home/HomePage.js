@@ -6,6 +6,8 @@ import MainFeaturedPost from "../layout/post/MainFeaturedPost";
 import MenuBar from "../layout/MenuBar";
 import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -20,21 +22,21 @@ const mainFeaturedPost = {
   imageText: "main image description",
 };
 
-const HorizonLine = () => {
-  return (
-    <div
-      style={{
-        width: "100%",
-        textAlign: "center",
-        borderBottom: "1px solid #aaa",
-        lineHeight: "0.1em",
-        margin: "10px 0 20px",
-      }}
-    >
-      <span style={{ background: "#fff", padding: "0 10px" }}></span>
-    </div>
-  );
-};
+// const HorizonLine = () => {
+//   return (
+//     <div
+//       style={{
+//         width: "100%",
+//         textAlign: "center",
+//         borderBottom: "1px solid #aaa",
+//         lineHeight: "0.1em",
+//         margin: "10px 0 20px",
+//       }}
+//     >
+//       <span style={{ background: "#fff", padding: "0 10px" }}></span>
+//     </div>
+//   );
+// };
 
 const defaultTheme = createTheme();
 const mdTheme = createTheme();
@@ -42,6 +44,7 @@ const mdTheme = createTheme();
 export default function HomePage() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+
   //   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -70,7 +73,7 @@ export default function HomePage() {
                   ? theme.palette.grey[100]
                   : theme.palette.grey[900],
               flexGrow: 1,
-              height: "100vh",
+              height: "100%",
             }}
           >
             <div
@@ -91,56 +94,57 @@ export default function HomePage() {
                 }}
                 paddingTop="3vmax"
               >
-                <Grid item xs={12}>
-                  <Paper
-                    sx={{
-                      p: 2,
-                      display: "flex",
-                      flexDirection: "column",
-                      height: 1000,
-                    }}
-                  >
-                    <MainFeaturedPost post={mainFeaturedPost} />
-                    {/* <HorizonLine></HorizonLine> */}
-                    <ImageList sx={{ width: 1570 }} cols={5}>
-                      {products.map((item) => (
-                        <ImageListItem
-                          key={item.id}
+                <Grid item xs={12} height={250}>
+                  <MainFeaturedPost post={mainFeaturedPost} />
+                </Grid>
+                {/* <HorizonLine></HorizonLine> */}
+                <Grid paddingLeft={5}>
+                  <ImageList sx={{ width: 1750 }} cols={5}>
+                    {products.map((item) => (
+                      <ImageListItem
+                        key={item.id}
+                        sx={{
+                          width: 200,
+                          padding: 1,
+                        }}
+                        onClick={() => {
+                          navigate(`/product/${item.id}`, {
+                            state: { value: item },
+                          });
+                        }}
+                      >
+                        <img
+                          src={item.imagePath}
+                          alt={item.name}
+                          loading="lazy"
+                        />
+                        <ImageListItemBar
+                          title={item.name}
+                          subtitle={<span>price: {item.price}</span>}
+                          position="below"
                           sx={{
-                            width: 200,
-                            padding: 1,
+                            "& .MuiImageListItemBar-title": {
+                              fontSize: 18,
+                            },
+                            "& .MuiImageListItemBar-subtitle": {
+                              fontSize: 14,
+                              fontWeight: "bold",
+                            },
                           }}
-                          onClick={() => {
-                            navigate(`/product/${item.id}`, {
-                              state: { value: item },
-                            });
-                          }}
-                        >
-                          <img
-                            src={item.imagePath}
-                            alt={item.name}
-                            loading="lazy"
-                          />
-                          <ImageListItemBar
-                            title={item.name}
-                            subtitle={<span>price: {item.price}</span>}
-                            position="below"
-                            sx={{
-                              "& .MuiImageListItemBar-title": {
-                                fontSize: 18,
-                              },
-                              "& .MuiImageListItemBar-subtitle": {
-                                fontSize: 14,
-                                fontWeight: "bold",
-                              },
-                            }}
-                          />
-                        </ImageListItem>
-                      ))}
-                    </ImageList>
-                  </Paper>
+                        />
+                      </ImageListItem>
+                    ))}
+                  </ImageList>
                 </Grid>
               </Grid>
+              <Stack spacing={2} alignItems={"center"}>
+                <Pagination
+                  count={10}
+                  size="large"
+                  //   page={page}
+                  //   onChange={handlePageChange}
+                />
+              </Stack>
             </div>
           </Box>
         </Box>

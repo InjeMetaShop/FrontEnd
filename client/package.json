@@ -24,6 +24,7 @@
     "npm": "^9.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-js-pagination": "^3.0.3",
     "react-material-ui-carousel": "^3.4.2",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
