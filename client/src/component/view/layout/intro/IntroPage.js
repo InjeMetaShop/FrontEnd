@@ -1,5 +1,5 @@
 import React from "react";
-import HomeAppBar from "../layout/HomeAppBar";
+import HomeAppBar from "../HomeAppBar";
 import "./intro.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
