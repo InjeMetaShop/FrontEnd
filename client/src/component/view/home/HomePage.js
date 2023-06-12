@@ -1,64 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import MainFeaturedPost from "../layout/post/MainFeaturedPost";
 import MenuBar from "../layout/MenuBar";
-import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-const mainFeaturedPost = {
-  title: "사장이 미쳤어요!!!",
-  description: "전품목 99% 할인",
-  image: process.env.PUBLIC_URL + "/images/ex.jpg",
-  imageText: "main image description",
-};
-
-// const HorizonLine = () => {
-//   return (
-//     <div
-//       style={{
-//         width: "100%",
-//         textAlign: "center",
-//         borderBottom: "1px solid #aaa",
-//         lineHeight: "0.1em",
-//         margin: "10px 0 20px",
-//       }}
-//     >
-//       <span style={{ background: "#fff", padding: "0 10px" }}></span>
-//     </div>
-//   );
-// };
+import HomeDetail from "./HomeDetail";
+import { Paper } from "@mui/material";
 
 const defaultTheme = createTheme();
 const mdTheme = createTheme();
 
 export default function HomePage() {
-  const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
-
-  //   const navigate = useNavigate();
-  useEffect(() => {
-    axios
-      .get("/api/product/all")
-      .then((response) => {
-        const fetchedProducts = response.data;
-        setProducts(fetchedProducts);
-        console.log(fetchedProducts);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
-  }, []);
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -94,57 +46,8 @@ export default function HomePage() {
                 }}
                 paddingTop="3vmax"
               >
-                <Grid item xs={12} height={250}>
-                  <MainFeaturedPost post={mainFeaturedPost} />
-                </Grid>
-                {/* <HorizonLine></HorizonLine> */}
-                <Grid paddingLeft={5}>
-                  <ImageList sx={{ width: 1750 }} cols={5}>
-                    {products.map((item) => (
-                      <ImageListItem
-                        key={item.id}
-                        sx={{
-                          width: 200,
-                          padding: 1,
-                        }}
-                        onClick={() => {
-                          navigate(`/product/${item.id}`, {
-                            state: { value: item },
-                          });
-                        }}
-                      >
-                        <img
-                          src={item.imagePath}
-                          alt={item.name}
-                          loading="lazy"
-                        />
-                        <ImageListItemBar
-                          title={item.name}
-                          subtitle={<span>price: {item.price}</span>}
-                          position="below"
-                          sx={{
-                            "& .MuiImageListItemBar-title": {
-                              fontSize: 18,
-                            },
-                            "& .MuiImageListItemBar-subtitle": {
-                              fontSize: 14,
-                              fontWeight: "bold",
-                            },
-                          }}
-                        />
-                      </ImageListItem>
-                    ))}
-                  </ImageList>
-                </Grid>
+                <HomeDetail />
               </Grid>
-              <Stack spacing={2} alignItems={"center"}>
-                <Pagination
-                  count={10}
-                  size="large"
-                  //   page={page}
-                  //   onChange={handlePageChange}
-                />
-              </Stack>
             </div>
           </Box>
         </Box>
