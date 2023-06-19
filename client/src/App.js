@@ -8,20 +8,22 @@ import IntroPage from "./component/view/layout/intro/IntroPage";
 import Footer from "./component/view/layout/Footer";
 import ProductPage from "./component/view/product/ProductPage";
 import ProfilePage from "./component/view/profile/ProfilePage";
+import Upload from "./component/view/upload/Upload";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<IntroPage />}></Route>
-        <Route path="/dashboard" element={<HomePage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/register" element={<SignUpPage />}></Route>
-        <Route path="/product/:productId" element={<ProductPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-      </Routes>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Routes>
+                <Route path="/" element={<IntroPage />}></Route>
+                <Route path="/dashboard" element={<HomePage />}></Route>
+                <Route path="/login" element={<LoginPage />}></Route>
+                <Route path="/register" element={<SignUpPage />}></Route>
+                <Route path="/product/:productId" element={<ProductPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/upload" element={<Upload />} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
