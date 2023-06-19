@@ -46,7 +46,6 @@ export default function ProductPage() {
                                 }}
                                 paddingTop="3vmax"
                             >
-                                {/* 멤버 */}
                                 <Grid item xs={12}>
                                     <Paper
                                         sx={{

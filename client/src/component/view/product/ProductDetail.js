@@ -1,19 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Paypal } from "../../util/Paypal";
 import ModelRender from "./ModelRender";
 import Grid from "@mui/material/Grid";
 import Carousel from "react-material-ui-carousel";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 
 const currency = "USD";
 
-function ProductDetail() {
+function ProductDetail(props) {
     const location = useLocation();
     const product = location.state.value;
-
-    useEffect(() => {}, []);
 
     return (
         <Grid container spacing={2} sx={{ margin: "auto" }}>
@@ -23,14 +20,30 @@ function ProductDetail() {
 
             <Grid item xs={6} sx={{ margin: "auto" }}>
                 <div style={{ justifyContent: "flex-end" }}>
+                    {/*
+                    <Carousel>
+                        {sources.map((item) => (
+  	                    <Paper key={item.id}>
+    	                <img src={item.src} alt='' />
+                        </Paper>))}
+                    </Carousel>
+                    */}
                     <Carousel>
                         <img
-                            src={product.imagePath}
+                            src={process.env.PUBLIC_URL + "/images/ex.jpg"}
+                            style={{ width: 800, height: 500 }}
+                        />
+                        <img
+                            src={process.env.PUBLIC_URL + "/images/pre.jpg"}
+                            style={{ width: 800, height: 500 }}
+                        />
+                        <img
+                            src={process.env.PUBLIC_URL + "/images/pre2.jpg"}
                             style={{ width: 800, height: 500 }}
                         />
                     </Carousel>
                     <Grid item xs={3} sx={{ margin: "auto" }}>
-                        <h1>{product.name}</h1>
+                        <div>{product.name}</div>
                         <div>{product.price}</div>
                     </Grid>
 

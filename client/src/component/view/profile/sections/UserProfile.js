@@ -1,13 +1,14 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import UserCart from "./UserCart";
 
 function UserProfile() {
-    const [value, setValue] = React.useState("1");
-
+    const [value, setValue] = useState("1");
+    const [myCart, setMyCart] = useState([]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -28,7 +29,9 @@ function UserProfile() {
                             <Tab label="내 아이템" value="1" />
                         </TabList>
                     </Box>
-                    <TabPanel value="1">상품 넣으면 될듯 여기에</TabPanel>
+                    <TabPanel value="1">
+                        <UserCart />
+                    </TabPanel>
                 </TabContext>
             </Box>
         </div>
