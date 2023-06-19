@@ -92,10 +92,10 @@ function HomeDetail() {
 export default HomeDetail;
 
 const mainFeaturedPost = {
-  title: "»çÀåÀÌ ¹ÌÃÆ¾î¿ä!!!",
-  description: "ÀüÇ°¸ñ 99% ÇÒÀÎ",
-  image: process.env.PUBLIC_URL + "/images/ex.jpg",
-  imageText: "main image description",
+    title: "Meta-Shop",
+    description: "ìžì‹ ë§Œì˜ ì•„ë°”íƒ€ë¥¼ ê¾¸ë©°ë³´ì„¸ìš”!",
+    image: process.env.PUBLIC_URL + "/images/ex.jpg",
+    imageText: "main image description",
 };
 
 // const HorizonLine = () => {
