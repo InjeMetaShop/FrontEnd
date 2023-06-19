@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Paypal } from "../../util/Paypal";
 import ModelRender from "./ModelRender";
 import Grid from "@mui/material/Grid";
 import Carousel from "react-material-ui-carousel";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const currency = "USD";
 
-function ProductDetail(props) {
-    const location = useLocation();
-    const product = location.state.value;
+function ProductDetail() {
+    const { productId } = useParams();
+    const [product, setProduct] = useState([]);
+    // 동적으로 추출된 상품 ID
+
+    useEffect(() => {
+        axios.get(`/api/product/${productId}`).then((response) => {
+            setProduct(response.data);
+        });
+    }, []);
 
     return (
         <Grid container spacing={2} sx={{ margin: "auto" }}>
@@ -20,30 +28,14 @@ function ProductDetail(props) {
 
             <Grid item xs={6} sx={{ margin: "auto" }}>
                 <div style={{ justifyContent: "flex-end" }}>
-                    {/*
-                    <Carousel>
-                        {sources.map((item) => (
-  	                    <Paper key={item.id}>
-    	                <img src={item.src} alt='' />
-                        </Paper>))}
-                    </Carousel>
-                    */}
                     <Carousel>
                         <img
-                            src={process.env.PUBLIC_URL + "/images/ex.jpg"}
-                            style={{ width: 800, height: 500 }}
-                        />
-                        <img
-                            src={process.env.PUBLIC_URL + "/images/pre.jpg"}
-                            style={{ width: 800, height: 500 }}
-                        />
-                        <img
-                            src={process.env.PUBLIC_URL + "/images/pre2.jpg"}
+                            src={product.imagePath}
                             style={{ width: 800, height: 500 }}
                         />
                     </Carousel>
                     <Grid item xs={3} sx={{ margin: "auto" }}>
-                        <div>{product.name}</div>
+                        <h1>{product.name}</h1>
                         <div>{product.price}</div>
                     </Grid>
 
