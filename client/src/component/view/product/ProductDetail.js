@@ -31,7 +31,7 @@ function ProductDetail() {
                     <Carousel>
                         <img
                             src={product.imagePath}
-                            style={{ width: 800, height: 500 }}
+                            style={{ width: 600, height: 500 }}
                         />
                     </Carousel>
                     <Grid item xs={3} sx={{ margin: "auto" }}>
