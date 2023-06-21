@@ -33,13 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function ApproveDetail() {
     const token = localStorage.getItem("token");
-    const tokenWithoutBearer = token.replace("Bearer ", "");
-    console.log(tokenWithoutBearer);
-    const headerConfig = {
-        headers: {
-            Authorization: { tokenWithoutBearer },
-        },
-    };
+    // const tokenWithoutBearer = token.replace("Bearer ", "");
     const [rows, setRows] = useState([]);
 
     useEffect(() => {
@@ -51,7 +45,6 @@ export default function ApproveDetail() {
                     (item) => item.approve === "false"
                 );
                 setRows(noneApprovedProducts);
-                console.log(rows);
             })
             .catch((error) => {
                 console.error("Error fetching products:", error);
@@ -60,7 +53,11 @@ export default function ApproveDetail() {
 
     const handleApprove = (id) => {
         axios
-            .post(`/api/admin/approve/${id}`, null, headerConfig)
+            .post(`/api/admin/approve/${id}`, null, {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            })
             .then((response) => {
                 console.log(response.data);
                 const updatedRows = rows.map((item) => {
@@ -103,10 +100,22 @@ export default function ApproveDetail() {
                                 {row.name}
                             </StyledTableCell>
                             <StyledTableCell align="center">
-                                {row.imagePath}
+                                <a
+                                    href={row.imagePath}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    이미지
+                                </a>
                             </StyledTableCell>
                             <StyledTableCell align="center">
-                                {row.fbxPath}
+                                <a
+                                    href={row.fbxPath}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    3D 모델
+                                </a>
                             </StyledTableCell>
                             <StyledTableCell align="center">
                                 {row.approve === "true" ? (
