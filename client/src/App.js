@@ -10,6 +10,7 @@ import ProductPage from "./component/view/product/ProductPage";
 import ProfilePage from "./component/view/profile/ProfilePage";
 import Upload from "./component/view/upload/Upload";
 import ApproveProduct from "./component/view/admin/ApproveProduct";
+import Test from "./component/Test";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/upload" element={<Upload />} />
                 <Route path="/approve" element={<ApproveProduct />} />
+                <Route path="/test" element={<Test />} />
             </Routes>
         </div>
     );
