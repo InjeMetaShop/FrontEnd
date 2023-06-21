@@ -52,7 +52,7 @@ export default function HomePage() {
                                           p: 2,
                                           display: "flex",
                                           flexDirection: "column",
-                                          height: 900,
+                                          height: 1080,
                                       }}
                                   >
                                       <HomeDetail />

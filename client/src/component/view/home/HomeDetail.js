@@ -16,16 +16,19 @@ function HomeDetail() {
   const [count, setCount] = useState(1);
 
   useEffect(() => {
-    axios
-      .get("/api/product/all")
-      .then((response) => {
-        const fetchedProducts = response.data;
-        setProducts(fetchedProducts);
-        setCount(Math.ceil(fetchedProducts.length / 10));
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
+      axios
+          .get("/api/product/all")
+          .then((response) => {
+              const fetchedProducts = response.data;
+              const approvedProducts = fetchedProducts.filter(
+                  (item) => item.approve === "true"
+              );
+              setProducts(approvedProducts);
+              setCount(Math.ceil(approvedProducts.length / 10));
+          })
+          .catch((error) => {
+              console.error("Error fetching products:", error);
+          });
   }, []);
 
   const displayedProducts = products.slice(

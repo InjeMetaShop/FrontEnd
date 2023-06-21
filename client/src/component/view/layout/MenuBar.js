@@ -20,7 +20,13 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
-import { UserListItems } from "./listitem/ListItems";
+import LogoutListItems, {
+    ApproveListItems,
+    ContentListItems,
+    ConvenienceListItems,
+    ProfileListItems,
+    UploadListItems,
+} from "./listitem/ListItems";
 
 const drawerWidth = 240;
 const pages = ["Products", "Pricing", "Blog"];
@@ -146,6 +152,7 @@ export default function ClippedDrawer() {
                     [`& .MuiDrawer-paper`]: {
                         width: drawerWidth,
                         boxSizing: "border-box",
+                        background: "#EEE", // 배경색 설정
                     },
                     display: { xs: "none", md: "block" },
                 }}
@@ -161,45 +168,17 @@ export default function ClippedDrawer() {
                 >
                     <br />
                     <br />
-                    <UserListItems />
-                    {/* <List>
-                        {["Inbox", "Starred", "Send email", "Drafts"].map(
-                            (text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton>
-                                        <ListItemIcon>
-                                            {index % 2 === 0 ? (
-                                                <InboxIcon />
-                                            ) : (
-                                                <MailIcon />
-                                            )}
-                                        </ListItemIcon>
-                                        <ListItemText primary={text} />
-                                    </ListItemButton>
-                                </ListItem>
-                            )
-                        )}
-                    </List> */}
-                    {/* <Divider
-                        sx={{ borderBottomWidth: "3px", borderColor: "black" }}
-                    /> */}
-                    {/* <List>
-                        {["All mail", "Trash", "Spam"].map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? (
-                                            <InboxIcon />
-                                        ) : (
-                                            <MailIcon />
-                                        )}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List> */}
+                    <ProfileListItems />
+                    <ContentListItems />
+                    <UploadListItems />
+                    <ApproveListItems />
+                    <Divider
+                        sx={{ borderBottomWidth: "1px", borderColor: "#DDD" }}
+                    />
+                    <ConvenienceListItems />
                 </Box>
+                <LogoutListItems />
+                <br />
             </Drawer>
         </Box>
     );

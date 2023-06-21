@@ -3,52 +3,52 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import GroupsIcon from "@mui/icons-material/Groups";
+
 import LogoutIcon from "@mui/icons-material/Logout";
-import InventoryIcon from "@mui/icons-material/Inventory";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import BackupOutlinedIcon from "@mui/icons-material/BackupOutlined";
+import CloudDoneOutlinedIcon from "@mui/icons-material/CloudDoneOutlined";
+import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function LogoutListItems() {
+export function ProfileListItems() {
     const navigate = useNavigate();
-
-    const handleLogout = () => {
-        // axios
-        //     .post("/api/auth/logout", null, {
-        //         headers: { Authorization: `${localStorage.getItem("token")}` },
-        //     })
-        //     .then(function (response) {
-        //         console.log(response, "로그아웃 성공");
-        //         navigate("/");
-        //     })
-    };
-
     return (
-        <ListItemButton onClick={handleLogout}>
-            <ListItemIcon>
-                <LogoutIcon sx={{ color: "#000" }} fontSize="large" />
-            </ListItemIcon>
-            <ListItemText
-                disableTypography
-                primary={
-                    <Typography
-                        style={{
-                            color: "black",
-                            fontSize: "0.9vmax",
-                            fontWeight: "600",
-                        }}
-                    >
-                        LOGOUT
-                    </Typography>
-                }
-            />
-        </ListItemButton>
+        <React.Fragment>
+            <ListItemButton
+                onClick={() => {
+                    navigate("/profile");
+                }}
+            >
+                <ListItemIcon>
+                    <PersonOutlineIcon
+                        sx={{ color: "#000" }}
+                        fontSize="large"
+                    />
+                </ListItemIcon>
+                <ListItemText
+                    disableTypography
+                    primary={
+                        <Typography
+                            style={{
+                                color: "black",
+                                fontSize: "0.9vmax",
+                                fontWeight: "600",
+                            }}
+                        >
+                            나의 콘텐츠
+                        </Typography>
+                    }
+                />
+            </ListItemButton>
+        </React.Fragment>
     );
 }
 
-export function UserListItems() {
+export function ContentListItems() {
     const navigate = useNavigate();
     return (
         <React.Fragment>
@@ -58,7 +58,10 @@ export function UserListItems() {
                 }}
             >
                 <ListItemIcon>
-                    <HomeIcon sx={{ color: "#000" }} fontSize="large" />
+                    <Inventory2OutlinedIcon
+                        sx={{ color: "#000" }}
+                        fontSize="large"
+                    />
                 </ListItemIcon>
                 <ListItemText
                     disableTypography
@@ -70,19 +73,29 @@ export function UserListItems() {
                                 fontWeight: "600",
                             }}
                         >
-                            대쉬보드
+                            콘텐츠
                         </Typography>
                     }
                 />
             </ListItemButton>
+        </React.Fragment>
+    );
+}
 
+export function UploadListItems() {
+    const navigate = useNavigate();
+    return (
+        <React.Fragment>
             <ListItemButton
                 onClick={() => {
-                    navigate("/item");
+                    navigate("/upload");
                 }}
             >
                 <ListItemIcon>
-                    <InventoryIcon sx={{ color: "#000" }} fontSize="large" />
+                    <BackupOutlinedIcon
+                        sx={{ color: "#000" }}
+                        fontSize="large"
+                    />
                 </ListItemIcon>
                 <ListItemText
                     disableTypography
@@ -94,7 +107,41 @@ export function UserListItems() {
                                 fontWeight: "600",
                             }}
                         >
-                            가이드
+                            콘텐츠 업로드
+                        </Typography>
+                    }
+                />
+            </ListItemButton>
+        </React.Fragment>
+    );
+}
+
+export function ApproveListItems() {
+    const navigate = useNavigate();
+    return (
+        <React.Fragment>
+            <ListItemButton
+                onClick={() => {
+                    navigate("/approve");
+                }}
+            >
+                <ListItemIcon>
+                    <CloudDoneOutlinedIcon
+                        sx={{ color: "#000" }}
+                        fontSize="large"
+                    />
+                </ListItemIcon>
+                <ListItemText
+                    disableTypography
+                    primary={
+                        <Typography
+                            style={{
+                                color: "black",
+                                fontSize: "0.9vmax",
+                                fontWeight: "600",
+                            }}
+                        >
+                            콘텐츠 승인
                         </Typography>
                     }
                 />
@@ -113,7 +160,7 @@ export function ConvenienceListItems() {
                 }}
             >
                 <ListItemIcon>
-                    <GroupsIcon sx={{ color: "#000" }} fontSize="large" />
+                    <SmsOutlinedIcon sx={{ color: "#000" }} fontSize="large" />
                 </ListItemIcon>
                 <ListItemText
                     disableTypography
@@ -125,11 +172,49 @@ export function ConvenienceListItems() {
                                 fontWeight: "600",
                             }}
                         >
-                            가이드
+                            문의하기
                         </Typography>
                     }
                 />
             </ListItemButton>
         </React.Fragment>
+    );
+}
+
+export default function LogoutListItems() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        axios
+            .post("/api/auth/logout", null, {
+                headers: { Authorization: `${localStorage.getItem("token")}` },
+            })
+            .then(function (response) {
+                console.log(response, "로그아웃 성공");
+                navigate("/");
+                localStorage.removeItem("token");
+            });
+    };
+
+    return (
+        <ListItemButton onClick={handleLogout}>
+            <ListItemIcon>
+                <LogoutIcon sx={{ color: "#000" }} fontSize="large" />
+            </ListItemIcon>
+            <ListItemText
+                disableTypography
+                primary={
+                    <Typography
+                        style={{
+                            color: "black",
+                            fontSize: "0.9vmax",
+                            fontWeight: "600",
+                        }}
+                    >
+                        로그아웃
+                    </Typography>
+                }
+            />
+        </ListItemButton>
     );
 }
