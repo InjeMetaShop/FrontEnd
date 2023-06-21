@@ -47,7 +47,7 @@ export default function LoginPage() {
                 }
                 console.log(response, "성공");
                 console.log(authorizationHeader);
-                navigate("/");
+                navigate("/dashboard");
             })
             .catch((err) => {
                 alert("로그인할 수 없습니다. 계정을 확인해주세요!");
