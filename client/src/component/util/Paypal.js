@@ -1,14 +1,33 @@
 import { useEffect, useState } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import jwt_decode from "jwt-decode";
-// This values are the props in the UI
-const amount = "100";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const style = { layout: "vertical" };
 
-export function Paypal({ currency, showSpinner, productId }) {
+export function Paypal({ currency, showSpinner, productId, price }) {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState("");
     const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+    const [convertedPrice, setConvertedPrice] = useState(null);
+
+    const handleLogOut = () => {
+        axios
+            .post("/api/auth/logout", null, {
+                headers: {
+                    Authorization: token,
+                },
+            })
+            .then(() => {
+                localStorage.removeItem("token");
+                // 추가적인 동작을 수행하세요
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     useEffect(() => {
         dispatch({
@@ -25,8 +44,24 @@ export function Paypal({ currency, showSpinner, productId }) {
         if (tokenData) {
             setEmail(tokenData.email);
         }
+    }, []);
 
-    }, [])
+    useEffect(() => {
+        const fetchExchangeRate = async () => {
+            try {
+                const response = await axios.get(
+                    "https://api.exchangerate-api.com/v4/latest/USD"
+                );
+                const exchangeRate = response.data.rates.KRW;
+                const convertedPrice = (price / exchangeRate).toFixed(2);
+                setConvertedPrice(convertedPrice);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchExchangeRate();
+    }, [price]);
 
     return (
         <>
@@ -34,7 +69,7 @@ export function Paypal({ currency, showSpinner, productId }) {
             <PayPalButtons
                 style={style}
                 disabled={false}
-                forceReRender={[amount, currency, style]}
+                forceReRender={[price, currency, style]}
                 fundingSource={undefined}
                 createOrder={(data, actions) => {
                     return actions.order
@@ -42,8 +77,8 @@ export function Paypal({ currency, showSpinner, productId }) {
                             purchase_units: [
                                 {
                                     amount: {
-                                        currency_code: currency,
-                                        value: amount,
+                                        currency_code: "USD",
+                                        value: convertedPrice || price,
                                     },
                                 },
                             ],
@@ -56,18 +91,24 @@ export function Paypal({ currency, showSpinner, productId }) {
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         // Your code here after capture the order
-                        const itemId = productId; // Replace with the actual item ID
-                        const userEmail = "{userEmail}"; // Replace with the actual user email
-                        fetch(`/api/purchase/item/${itemId}/${email}`, {
-                            method: "POST",
-                            // Add any headers or body parameters as needed
-                        })
-                        .then(response => {
-                            // Handle the response
-                        })
-                        .catch(error => {
-                            // Handle the error
-                        });
+                        const itemId = productId;
+                        axios
+                            .post(
+                                `/api/purchase/item/${itemId}/${email}`,
+                                null,
+                                {
+                                    headers: {
+                                        Authorization: `${token}`,
+                                    },
+                                }
+                            )
+                            .then(() => {
+                                alert(
+                                    "상품 결제가 완료되었습니다. 다시 로그인 해주세요!"
+                                );
+                                handleLogOut();
+                                navigate("/");
+                            });
                     });
                 }}
             />
