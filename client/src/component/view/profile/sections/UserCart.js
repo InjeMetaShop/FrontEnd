@@ -21,6 +21,8 @@ function UserCart() {
 
         setPurchaseIds(ids);
 
+        console.log(ids)
+
         // 각 purchase 항목에 대한 데이터 요청
         const fetchData = async () => {
             const productData = [];
@@ -67,16 +69,26 @@ function UserCart() {
                             margin: "10px",
                             textAlign: "center",
                         }}
-                        onClick={() => handleProductClick(product.id)}
+                        
                     >
                         {product && product.imagePath && (
                             <img
                                 src={product.imagePath}
                                 alt={product.name}
                                 style={{ width: "200px", height: "200px" }}
+                                onClick={() => handleProductClick(product.id)}
                             />
                         )}
                         {product && product.name && <p>{product.name}</p>}
+                        {product && product.fbxPath && (
+                            <a
+                                href={product.fbxPath}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                아바타 다운로드
+                            </a>
+                        )}
                     </div>
                 ))}
         </div>
