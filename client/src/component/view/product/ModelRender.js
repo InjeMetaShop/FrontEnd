@@ -32,12 +32,18 @@ const ModelRender = (props) => {
         0.25,
         20
       );
-      camera.position.set(4, 2, 3.5);
+
+      if (product.category === "set" || product.name === "CowBoyLong_Pants" ){
+        camera.position.set(4.6, 2, 4.5);
+      } else {
+        camera.position.set(4, 2, 3.5);
+      }
+
 
       scene = new THREE.Scene();
 
       // 그리드 생성
-      const gridHelper = new THREE.GridHelper(100, 100);
+      const gridHelper = new THREE.GridHelper(1000, 1000);
       scene.add(gridHelper);
 
       new RGBELoader()
@@ -52,17 +58,42 @@ const ModelRender = (props) => {
           render();
 
           const loader = new GLTFLoader().setPath(
-            process.env.PUBLIC_URL + "/gltf/cloth/Knit_Cloth/"
+            //process.env.PUBLIC_URL + "/gltf/cloth/Knit_Cloth/"
+            process.env.PUBLIC_URL + "/gltf/" + product.category + "/" + product.name + "/"
           );
-          loader.load("Knit_Cloth.gltf", function (gltf) {
+          // loader.load("Knit_Cloth.gltf", function (gltf) {
+            loader.load(product.name + ".gltf", function (gltf) {
             const model = gltf.scene;
 
-            if (currentCategory === "up") {
+
               model.scale.set(7, 7, 7);
-            } else {
-              model.scale.set(1, 1, 1);
-            }
-            model.position.set(0, -4.0, 0);
+              if (product.category === "up") {
+                model.position.set(0,-4.0,0);
+
+              } else if (product.category === "down") {
+                model.position.set(0, -2.5, 0);
+                if (product.name === "CowBoyLong_Pants"){
+                  model.scale.set(4, 4, 4);
+                  model.position.set(0, -0.5, 0);
+                }
+              } else if (product.category === "cap") {
+                model.position.set(2, -6.5, -1);
+
+              } else if (product.category === "shoes") {
+                model.position.set(0,0,0);
+
+              } else {
+                model.scale.set(4, 4, 4);
+                model.position.set(0, -1, 0);
+              }
+
+
+            // if (currentCategory === "up") {
+            //   model.scale.set(7, 7, 7);
+            // } else {
+            //   model.scale.set(1, 1, 1);
+            // }
+            // model.position.set(0, -4.0, 0);
             model.rotation.set(0, 60, 0);
             scene.add(model);
             render();
@@ -103,6 +134,7 @@ const ModelRender = (props) => {
     if (currentCategory && currentName) {
       init();
     }
+
   }, [currentCategory, currentName]);
 
   return <> <div ref={containerRef} /></>;

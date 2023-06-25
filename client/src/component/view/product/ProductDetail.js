@@ -15,9 +15,11 @@ function ProductDetail() {
   const [product, setProduct] = useState([]);
   // 동적으로 추출된 상품 ID
 
+
   useEffect(() => {
     axios.get(`/api/product/${productId}`).then((response) => {
       setProduct(response.data);
+      console.log(product.catagory);
     });
   }, []);
 
@@ -31,6 +33,7 @@ function ProductDetail() {
         <div style={{ justifyContent: "flex-end" }}>
           <Carousel>
             <img src={product.imagePath} style={{ width: 600, height: 500 }} />
+            
           </Carousel>
           <Grid item xs={3} sx={{ margin: "auto" }}>
             <h1>{product.name}</h1>

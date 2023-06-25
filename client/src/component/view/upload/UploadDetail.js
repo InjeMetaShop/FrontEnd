@@ -10,8 +10,10 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useNavigate } from "react-router-dom";
 
 export default function UploadDetail() {
+    const navigate = useNavigate()
     const [selectedImg, setSelectedImg] = useState([]);
     const [selectedFbx, setSelectedFbx] = useState([]);
     const [productDetails, setProductDetails] = useState({
@@ -80,8 +82,6 @@ export default function UploadDetail() {
 
     const handleUpload = () => {
         if (selectedImg.length > 0 && selectedFbx.length > 0) {
-            console.log(selectedImg[0]);
-            console.log(selectedFbx[0]);
             const formData = new FormData();
 
             formData.append("product", JSON.stringify(productDetails));
@@ -96,6 +96,8 @@ export default function UploadDetail() {
                 })
                 .then((response) => {
                     console.log("Files uploaded successfully");
+                    alert("상품 업로드가 완료되었습니다.")
+                    navigate('/dashboard')
                     // 파일 업로드 성공 후 처리할 작업 추가
                 })
                 .catch((error) => {
@@ -217,7 +219,8 @@ export default function UploadDetail() {
                         <MenuItem value={"up"}>up</MenuItem>
                         <MenuItem value={"down"}>down</MenuItem>
                         <MenuItem value={"cap"}>cap</MenuItem>
-                        <MenuItem value={"Accessory"}>accessory</MenuItem>
+                        <MenuItem value={"set"}>set</MenuItem>
+                        <MenuItem value={"shoes"}>shoes</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
