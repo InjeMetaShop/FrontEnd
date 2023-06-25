@@ -1,0 +1,220 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 850,
+      "type": "VEC3",
+      "max": [
+        0.15254010260105133,
+        0.077551193535327911,
+        0.19249629974365234
+      ],
+      "min": [
+        -0.15254010260105133,
+        -0.077551193535327911,
+        -0.19249629974365234
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 850,
+      "type": "VEC3",
+      "max": [
+        0.998160183429718,
+        0.999603807926178,
+        0.993362545967102
+      ],
+      "min": [
+        -0.998829185962677,
+        -0.99840646982192993,
+        -0.99982064962387085
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 850,
+      "type": "VEC4",
+      "max": [
+        0.99901831150054932,
+        0.99997520446777344,
+        0.96240830421447754,
+        -1.0
+      ],
+      "min": [
+        -0.99876803159713745,
+        -0.98695194721221924,
+        -0.99557554721832275,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 850,
+      "type": "VEC2",
+      "max": [
+        0.98884201049804688,
+        0.98405599594116211
+      ],
+      "min": [
+        0.0075079998932778835,
+        0.09303399920463562
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 3747,
+      "type": "SCALAR",
+      "max": [
+        849.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "Plattar UnityGLTF (2021.3.17f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Brown_Hat.bin",
+      "byteLength": 55788
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 10200
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10200,
+      "byteLength": 10200
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 20400,
+      "byteLength": 13600
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 34000,
+      "byteLength": 6800
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 40800,
+      "byteLength": 14988
+    }
+  ],
+  "images": [
+    {
+      "uri": "T_Hat_Normal.jpg",
+      "name": "T_Hat_Normal"
+    },
+    {
+      "uri": "T_Hat_Albedo.png",
+      "name": "T_Hat_Albedo"
+    },
+    {
+      "uri": "T_Hat_Metallic.png",
+      "name": "T_Hat_Metallic"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.99,
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "normalTexture": {
+        "index": 0
+      },
+      "occlusionTexture": {
+        "index": 2
+      },
+      "name": "Brown_Hat"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "Brown_Hat"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "scale": [
+        1.0,
+        0.93729,
+        0.93729
+      ],
+      "translation": [
+        0.013,
+        1.034,
+        -0.015
+      ],
+      "name": "Brown_Hat"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Brown_Hat"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "T_Hat_Normal"
+    },
+    {
+      "sampler": 0,
+      "source": 1,
+      "name": "T_Hat_Albedo"
+    },
+    {
+      "sampler": 0,
+      "source": 2,
+      "name": "T_Hat_Metallic"
+    }
+  ]
+}

@@ -1,11 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
+import axios from 'axios'
 
-const ModelRender = () => {
+const ModelRender = (props) => {
+  const [product, setProduct] = useState([])
+  const [currentCategory, setCurrentCategory] = useState("")
+  const [currentName, setCurrentName] = useState("")
   const containerRef = useRef(null);
+  
+  useEffect(() => {
+    setProduct(props.product);
+  }, [props.product]);
+
+  useEffect(() => {
+    setCurrentCategory(product.category);
+    setCurrentName(product.name);
+  }, [product]);
 
   useEffect(() => {
     let camera, scene, renderer;
@@ -19,29 +32,38 @@ const ModelRender = () => {
         0.25,
         20
       );
-      camera.position.set(1, 1, 4.5);
+      camera.position.set(4, 2, 3.5);
 
       scene = new THREE.Scene();
+
+      // ê·¸ë¦¬ë“œ ìƒì„±
+      const gridHelper = new THREE.GridHelper(100, 100);
+      scene.add(gridHelper);
 
       new RGBELoader()
         .setPath(process.env.PUBLIC_URL + "/textures/equirectangular/")
         .load("royal_esplanade_1k.hdr", function (texture) {
           texture.mapping = THREE.EquirectangularReflectionMapping;
 
-          scene.background = texture;
+          // ë°°ê²½ì„ ê·¸ë¦¬ë“œë¡œ ë³€ê²½
+          scene.background = gridHelper;
           scene.environment = texture;
 
           render();
 
           const loader = new GLTFLoader().setPath(
-            process.env.PUBLIC_URL + "/gl/"
+            process.env.PUBLIC_URL + "/gltf/cloth/Knit_Cloth/"
           );
-          loader.load("down_1.gltf", function (gltf) {
+          loader.load("Knit_Cloth.gltf", function (gltf) {
             const model = gltf.scene;
 
-            model.scale.set(7, 7, 7);
-            model.position.set(0, -2.5, 0); //
-            model.rotation.set(0, 60, 0); // ¸ðµ¨À» 180µµ È¸Àü (¿©±â¼­´Â Y ÃàÀ» Math.PI·Î ¼³Á¤)
+            if (currentCategory === "up") {
+              model.scale.set(7, 7, 7);
+            } else {
+              model.scale.set(1, 1, 1);
+            }
+            model.position.set(0, -4.0, 0);
+            model.rotation.set(0, 60, 0);
             scene.add(model);
             render();
           });
@@ -58,7 +80,7 @@ const ModelRender = () => {
       controls.addEventListener("change", render);
       controls.minDistance = 2;
       controls.maxDistance = 10;
-      controls.target.set(0, 0, -0.2);
+      controls.target.set(0, 0, 0);
       controls.update();
 
       window.addEventListener("resize", onWindowResize);
@@ -77,14 +99,13 @@ const ModelRender = () => {
       renderer.render(scene, camera);
     };
 
-    init();
 
-    return () => {
-      window.removeEventListener("resize", onWindowResize);
-    };
-  }, []);
+    if (currentCategory && currentName) {
+      init();
+    }
+  }, [currentCategory, currentName]);
 
-  return <div ref={containerRef} />;
+  return <> <div ref={containerRef} /></>;
 };
 
 export default ModelRender;

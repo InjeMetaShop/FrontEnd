@@ -8,4 +8,11 @@ module.exports = function (app) {
             changeOrigin: true,
         })
     );
+    app.use(
+        "/storage.googleapis.com",
+        createProxyMiddleware({
+            target: "https://storage.googleapis.com",
+            changeOrigin: true,
+        })
+    );
 };

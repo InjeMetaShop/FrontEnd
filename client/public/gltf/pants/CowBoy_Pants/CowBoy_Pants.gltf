@@ -1,0 +1,188 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1029,
+      "type": "VEC3",
+      "max": [
+        0.09541330486536026,
+        0.60648399591445923,
+        0.073425695300102234
+      ],
+      "min": [
+        -0.09566989541053772,
+        0.390620619058609,
+        -0.063785552978515625
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1029,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -0.99900263547897339
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1029,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.99219405651092529,
+        0.99987161159515381,
+        -1.0
+      ],
+      "min": [
+        -0.9997449517250061,
+        -0.99446576833724976,
+        -0.99988865852355957,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1029,
+      "type": "VEC2",
+      "max": [
+        0.99227011203765869,
+        0.97932350635528564
+      ],
+      "min": [
+        0.0075033903121948242,
+        0.53637892007827759
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 3813,
+      "type": "SCALAR",
+      "max": [
+        1028.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "Plattar UnityGLTF (2021.3.17f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "CowBoy_Pants.bin",
+      "byteLength": 64644
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 12348
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 12348,
+      "byteLength": 12348
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 24696,
+      "byteLength": 16464
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 41160,
+      "byteLength": 8232
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 49392,
+      "byteLength": 15252
+    }
+  ],
+  "images": [
+    {
+      "uri": "CowBoy_Pants.png",
+      "name": "CowBoy_Pants_i"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      },
+      "name": "CowBoy_Pants_i"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "CowBoy_Pants"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        8.14603354E-08,
+        -4.440909E-16,
+        -1.67088582E-14,
+        -1.0
+      ],
+      "translation": [
+        -8.516944E-16,
+        -8.34465E-09,
+        2.98020469E-10
+      ],
+      "name": "CowBoy_Pants"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "CowBoy_Pants"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "CowBoy_Pants_i"
+    }
+  ]
+}

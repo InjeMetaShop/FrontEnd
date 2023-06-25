@@ -1,0 +1,184 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1136,
+      "type": "VEC3",
+      "max": [
+        0.37742388248443604,
+        0.85148239135742188,
+        0.0727442279458046
+      ],
+      "min": [
+        -0.37742388248443604,
+        0.581493616104126,
+        -0.059992969036102295
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1136,
+      "type": "VEC3",
+      "max": [
+        0.99782443046569824,
+        0.9986121654510498,
+        0.99990928173065186
+      ],
+      "min": [
+        -0.99782466888427734,
+        -0.999954342842102,
+        -0.99980276823043823
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1136,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.63272207975387573,
+        0.99969708919525146,
+        -1.0
+      ],
+      "min": [
+        -0.94869285821914673,
+        -0.9998779296875,
+        -0.99969685077667236,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1136,
+      "type": "VEC2",
+      "max": [
+        0.76457798480987549,
+        0.96751594543457031
+      ],
+      "min": [
+        0.04711604118347168,
+        0.15825945138931274
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 5748,
+      "type": "SCALAR",
+      "max": [
+        1135.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "Plattar UnityGLTF (2021.3.17f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "M2M_Cloth.bin",
+      "byteLength": 77520
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13632
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 13632,
+      "byteLength": 13632
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 27264,
+      "byteLength": 18176
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 45440,
+      "byteLength": 9088
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 54528,
+      "byteLength": 22992
+    }
+  ],
+  "images": [
+    {
+      "uri": "M2M_Cloth.png",
+      "name": "M2M_Cloth_i"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "M2M_Cloth_i"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "M2M_Cloth_i"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "M2M_Cloth_i"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "M2M_Cloth_i"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "M2M_Cloth_i"
+    }
+  ]
+}

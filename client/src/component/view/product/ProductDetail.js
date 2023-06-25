@@ -24,7 +24,7 @@ function ProductDetail() {
   return (
     <Grid container spacing={2} sx={{ margin: "auto" }}>
       <Grid item xs={6}>
-        <ModelRender />
+        <ModelRender productId={productId} product={product}/>
       </Grid>
 
       <Grid item xs={6} sx={{ margin: "auto" }}>

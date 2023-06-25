@@ -1,0 +1,213 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1821,
+      "type": "VEC3",
+      "max": [
+        0.12576904892921448,
+        0.82760429382324219,
+        0.090566687285900116
+      ],
+      "min": [
+        -0.12576904892921448,
+        0.29731348156929016,
+        -0.07637951523065567
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1821,
+      "type": "VEC3",
+      "max": [
+        0.99973827600479126,
+        0.99928790330886841,
+        0.99998867511749268
+      ],
+      "min": [
+        -0.99998295307159424,
+        -0.99997687339782715,
+        -0.99998784065246582
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1821,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        0.97708499431610107,
+        0.99924385547637939,
+        -1.0
+      ],
+      "min": [
+        -1.0,
+        -0.98551756143569946,
+        -0.999229907989502,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1821,
+      "type": "VEC2",
+      "max": [
+        0.97627067565917969,
+        0.97735697031021118
+      ],
+      "min": [
+        0.024853233247995377,
+        0.017809394747018814
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 1821,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5125,
+      "count": 6582,
+      "type": "SCALAR",
+      "max": [
+        1820.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "Plattar UnityGLTF (2021.3.17f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Dress_OnePiece.bin",
+      "byteLength": 142872
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 21852
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 21852,
+      "byteLength": 21852
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 43704,
+      "byteLength": 29136
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 72840,
+      "byteLength": 14568
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 87408,
+      "byteLength": 29136
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 116544,
+      "byteLength": 26328
+    }
+  ],
+  "images": [
+    {
+      "uri": "Dress_OnePiece.png",
+      "name": "Dress_OnePiece_i"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "name": "Dress_OnePiece_i"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "COLOR_0": 4
+          },
+          "indices": 5,
+          "material": 0
+        }
+      ],
+      "name": "Dress_OnePiece"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        8.14603354E-08,
+        -6.32827039E-15,
+        3.608226E-15,
+        -1.0
+      ],
+      "translation": [
+        -2.894733E-16,
+        -0.007,
+        -1.4901218E-09
+      ],
+      "name": "Dress_OnePiece"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Dress_OnePiece"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "Dress_OnePiece_i"
+    }
+  ]
+}
