@@ -1,125 +1,85 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 
-import Stats from "three/examples/jsm/libs/stats.module.js";
-import "./main.css";
+const Test = () => {
+  const containerRef = useRef(null);
 
-export default function Test() {
-    const containerRef = useRef(null);
+  useEffect(() => {
+    let camera, scene, renderer;
 
-    useEffect(() => {
-        let camera, scene, renderer, stats;
-        const clock = new THREE.Clock();
-        let mixer;
+    const init = () => {
+      const container = containerRef.current;
 
-        const init = () => {
-            const container = containerRef.current;
+      camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        0.25,
+        20
+      );
+      camera.position.set(-1.8, 0.6, 2.7);
 
-            camera = new THREE.PerspectiveCamera(
-                45,
-                window.innerWidth / window.innerHeight,
-                1,
-                2000
-            );
-            camera.position.set(100, 200, 300);
+      scene = new THREE.Scene();
 
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xa0a0a0);
-            scene.fog = new THREE.Fog(0xa0a0a0, 200, 1000);
+      new RGBELoader()
+        .setPath("textures/equirectangular/")
+        .load("royal_esplanade_1k.hdr", function (texture) {
+          texture.mapping = THREE.EquirectangularReflectionMapping;
 
-            const hemiLight = new THREE.HemisphereLight(
-                0xffffff,
-                0x444444,
-                1.5
-            );
-            hemiLight.position.set(0, 200, 0);
-            scene.add(hemiLight);
+          scene.background = texture;
+          scene.environment = texture;
 
-            const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-            dirLight.position.set(0, 200, 100);
-            dirLight.castShadow = true;
-            dirLight.shadow.camera.top = 180;
-            dirLight.shadow.camera.bottom = -100;
-            dirLight.shadow.camera.left = -120;
-            dirLight.shadow.camera.right = 120;
-            scene.add(dirLight);
+          render();
 
-            const mesh = new THREE.Mesh(
-                new THREE.PlaneGeometry(2000, 2000),
-                new THREE.MeshPhongMaterial({
-                    color: 0x999999,
-                    depthWrite: false,
-                })
-            );
-            mesh.rotation.x = -Math.PI / 2;
-            mesh.receiveShadow = true;
-            scene.add(mesh);
+          const loader = new GLTFLoader().setPath(
+            process.env.PUBLIC_URL + "/gl/"
+          );
+          loader.load("down_1.gltf", function (gltf) {
+            scene.add(gltf.scene);
+            render();
+          });
+        });
 
-            const grid = new THREE.GridHelper(2000, 20, 0x000000, 0x000000);
-            grid.material.opacity = 0.2;
-            grid.material.transparent = true;
-            scene.add(grid);
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1;
+      container.appendChild(renderer.domElement);
 
-            const loader = new FBXLoader();
-            loader.load(
-                process.env.PUBLIC_URL + "/glTF/Samba Dancing.fbx",
-                function (object) {
-                    mixer = new THREE.AnimationMixer(object);
-                    const action = mixer.clipAction(object.animations[0]);
-                    action.play();
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.addEventListener("change", render);
+      controls.minDistance = 2;
+      controls.maxDistance = 10;
+      controls.target.set(0, 0, -0.2);
+      controls.update();
 
-                    object.traverse(function (child) {
-                        if (child.isMesh) {
-                            child.castShadow = true;
-                            child.receiveShadow = true;
-                        }
-                    });
+      window.addEventListener("resize", onWindowResize);
+    };
 
-                    scene.add(object);
-                }
-            );
+    const onWindowResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setPixelRatio(window.devicePixelRatio);
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.shadowMap.enabled = true;
-            container.appendChild(renderer.domElement);
+      renderer.setSize(window.innerWidth, window.innerHeight);
 
-            const controls = new OrbitControls(camera, renderer.domElement);
-            controls.target.set(0, 100, 0);
-            controls.update();
+      render();
+    };
 
-            window.addEventListener("resize", onWindowResize);
+    const render = () => {
+      renderer.render(scene, camera);
+    };
 
-            stats = new Stats();
-            container.appendChild(stats.dom);
-        };
+    init();
 
-        const onWindowResize = () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        };
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+    };
+  }, []);
 
-        const animate = () => {
-            requestAnimationFrame(animate);
+  return <div ref={containerRef} />;
+};
 
-            const delta = clock.getDelta();
-            if (mixer) mixer.update(delta);
-
-            renderer.render(scene, camera);
-            stats.update();
-        };
-
-        init();
-        animate();
-
-        return () => {
-            // Clean up resources (if needed)
-        };
-    }, []);
-
-    return <div ref={containerRef}></div>;
-}
+export default Test;
