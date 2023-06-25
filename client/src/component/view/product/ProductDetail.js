@@ -58,7 +58,7 @@ function ProductDetail() {
                   currency: "USD",
                 }}
               >
-                <Paypal currency={currency} showSpinner={false} />
+                <Paypal currency={currency} showSpinner={false} productId = {productId} />
               </PayPalScriptProvider>
             </div>
           </Grid>

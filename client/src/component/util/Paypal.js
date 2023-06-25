@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-
+import jwt_decode from "jwt-decode";
 // This values are the props in the UI
 const amount = "100";
 const style = { layout: "vertical" };
 
-export function Paypal({ currency, showSpinner }) {
+export function Paypal({ currency, showSpinner, productId }) {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+    const [email, setEmail] = useState("")
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         dispatch({
@@ -17,6 +19,14 @@ export function Paypal({ currency, showSpinner }) {
             },
         });
     }, [currency, showSpinner]);
+
+    useEffect(() => {
+        const tokenData = jwt_decode(token);
+        if (tokenData) {
+            setEmail(tokenData.email);
+        }
+
+    }, [])
 
     return (
         <>
@@ -46,6 +56,18 @@ export function Paypal({ currency, showSpinner }) {
                 onApprove={function (data, actions) {
                     return actions.order.capture().then(function () {
                         // Your code here after capture the order
+                        const itemId = productId; // Replace with the actual item ID
+                        const userEmail = "{userEmail}"; // Replace with the actual user email
+                        fetch(`/api/purchase/item/${itemId}/${email}`, {
+                            method: "POST",
+                            // Add any headers or body parameters as needed
+                        })
+                        .then(response => {
+                            // Handle the response
+                        })
+                        .catch(error => {
+                            // Handle the error
+                        });
                     });
                 }}
             />
